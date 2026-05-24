@@ -32,7 +32,7 @@ hash -r
 # 2. 빌드 모드 최적화 플래그 세팅
 EXTRA_ZEPHYR_ARGS=""
 if [ "${BUILD_MODE}" = "debug" ]; then
-    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=y -DCONFIG_COMPILER_OPT=\"-Og -g\""
+    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=y -DCONFIG_COMPILER_OPT=\"-Og\""
 else
     EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=n -DCONFIG_COMPILER_OPT=\"-Os\""
 fi
