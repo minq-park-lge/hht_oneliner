@@ -2,7 +2,8 @@
 sudo apt-get update && sudo apt-get install -y build-essential curl git procps
 
 # 2. Linuxbrew 공식 설치 스크립트 실행 (비대화형 자동 설치)
-NONINTERACTIVE=1 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+#NONINTERACTIVE=1
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 # 3. 현재 쉘 세션에 브루 환경 변수 즉시 적용
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
