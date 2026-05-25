@@ -3,6 +3,10 @@
 
 POSTBUILD_DIR=$(pwd)/postbuild.sh
 echo $POSTBUILD_DIR
+
+PATH="$HOME/nxp_matter/.environment/pigweed-venv/bin:$PATH"
+
+
 set -e
 
 BUILD_MODE=$(echo "${1:-debug}" | tr '[:upper:]' '[:lower:]')
