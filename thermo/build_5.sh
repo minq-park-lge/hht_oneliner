@@ -1,8 +1,8 @@
 #!/bin/bash
 # 사용법: ./build.sh debug 또는 ./build.sh release
 
-POSTBUILD_DIR=($pwd)/postbuild.sh
-
+POSTBUILD_DIR=$(pwd)/postbuild.sh
+echo $POSTBUILD_DIR
 set -e
 
 BUILD_MODE=$(echo "${1:-debug}" | tr '[:upper:]' '[:lower:]')
@@ -65,7 +65,7 @@ echo " Running Custom Post-Build Script to extract Signed Components    "
 echo "=================================================================="
 
 # 경로 변수 매핑 처리 정의
-BUILD_DIR="${MATTER_ROOT}/out/zephyr"
+BUILD_DIR="${MATTER_ROOT}/out"
 SDK_DIR="${MATTER_ROOT}/third_party/nxp/nxp_matter_support/github_sdk/sdk_next/repo/mcuxsdk"
 POSTBUILD_SCRIPT=$POSTBUILD_DIR
 
