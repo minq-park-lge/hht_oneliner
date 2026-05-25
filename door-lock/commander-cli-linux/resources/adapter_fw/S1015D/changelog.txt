@@ -1,0 +1,235 @@
+
+==============================================================
+2v0p2
+==============================================================
+
+Added Features:
+ * Support DCH message configuration from PC tools
+ * When using "sys restore" drivermode will now default to WinUSB instead of SEGGER
+
+Addressed issues:
+ * Minor bugfixes
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p1
+==============================================================
+
+Added Features:
+ * General improvements for CLI commands.
+
+Addressed issues:
+ * Stored PTI configuration would not be applied on boot.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p0
+==============================================================
+
+Added Features:
+ * Added WinUSB support
+     The driver mode will change to WinUSB automatically after the update.
+     This will cause the USB PID to change, which may cause issues in special setups relying on the PID.
+     For Windows 7 and earlier: Please install the latest SEGGER J-Link software pack
+     with the "Legacy drivers" option enabled before installing this update.
+     If needed, the mode can be changed back to SEGGER using either one of:
+     - Simplicity Commander: "commander adapter drivermode" or GUI
+     - Admin console: The "sys drivermode" command.
+     - SEGGER J-Link Configurator
+ * Enabled PCODE and HSS support
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p1
+==============================================================
+
+Added Features:
+ * Re-add prodtest radio commands.
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p0
+==============================================================
+
+Added Features:
+ * Added command to restore default configuration - "sys restore"
+ * Added command to manually disable/enable VCOM - "serial vcom enable/disable"
+ * Support controlling power on/off and voltage from PC tools
+ * Added board support: BRD2606A, BRD2608A, BRD2708A, BRD2709A, BRD2710A, BRD2711A, BRD2713A
+
+Addressed issues:
+ * Fixed potential for corrupting configuration
+ * Improved resistance against "garbage" UART bytes when VCOM is disabled
+ * Concurrent use of RTT and VCOM could cause data loss on the VCOM channel.
+ * Series 1 device recovery was unreliable. Introduced in 1.5.1.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p2
+==============================================================
+
+Added Features:
+ * Power down external flash before entering sleep mode
+   * Decreases current draw on BRD2705A and BRD2606A
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p1
+==============================================================
+
+Added Features:
+ * Support for reading and writing scratchpad from PC tools
+ * Support clearing the nickname by using syntax 'sys nickname ""'
+ * Updated the base J-Link debugger application sources
+
+Addressed issues:
+ * Firmware upgrade could fail on some boards (BRD4314A, and all Laird boards)
+   * To recover, ground TP999 for a few seconds when connecting power to halt in
+     the bootloader, and then upgrade firmware normally
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p0
+==============================================================
+
+Added Features:
+ * Support for "auxillary UART" for SiWx917 devices, re-purposing flow control pins
+ * Support for VCOM config from PC tools
+ * Support entering ISP mode for SiWx917 devices
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v4p13
+==============================================================
+Added features:
+ * None
+
+Addressed issues:
+ * Board ID did not work on BRD2704A, introduced in 1v4p12.
+   Affected boards appear as "BRD0000A", and must be recovered using Simplicity Commander 1.16.1 or newer.
+
+Known Issues/Limitations;
+ * VUART on series 2 devices may stop working after a reset of the the target device debug interface
+
+
+==============================================================
+1v4p12
+==============================================================
+Added features:
+ * Added support for new boards, including BRD4003A and BRD1015A
+ * Increased maximum PTI packet length from 1024 B to 1950 B
+ * The reported maximum target interface speed is now dependent on the type of interface (SWD, JTAG, C2)
+ * Added "sys voltage" CLI command to check VMCU and 3V3
+
+Addressed issues:
+ * VUART didn't work on certain xG24 projects
+ * For a small set of radio boards, the stored CTUNE values were not exposed to external applications (e.g. Commander/Studio)
+
+Known Issues/Limitations;
+ * VUART on series 2 devices may stop working after a reset of the the target device debug interface
+
+
+==============================================================
+1v4p9
+==============================================================
+Added features:
+ * Added support for new boards
+
+Addressed issues:
+ * Stale VUART/SWO data is now flushed when connecting to DCH
+
+Known Issues/Limitations;
+ * VUART on series 2 devices may stop working after a reset of the the target device debug interface
+
+
+==============================================================
+1v4p8
+==============================================================
+Added features:
+ * Support for configuring PTI baudrate to 3.2 MHz. This requires a RAIL version above 2.8.0.13.
+ * Support for VCOM baudrates up to 3686400 Hz.
+ * Reduced VCOM latency.
+ * Added "serial vcom stats" for statistics on VCOM data.
+ * VUART support for devices with a non-zero flash base address.
+
+Addressed issues:
+ * Ensure that debugger SWD pins are properly deinitialized when not actively debugging. This could cause the target device to draw extra current.
+ * Ensure that debugger SWD pins are tristated when in either debug mode "in" or "off".
+ * Support for different number of Up and Down-channels for RTT when using VUART.
+ * Fixed a bug where the first PTI-frame after PTI interface reconfiguration was dropped.
+ * Fixed a potential issue where the debugger could draw extra current when powered externally over 5V.
+
+Known Issues/Limitations;
+ * VUART on series 2 devices may stop working after a reset of the the target device debug interface
+
+
+==============================================================
+1v4p7
+==============================================================
+* Support for B variant TB Lynx.
+Allows specific testing of new ambient light sensor VEML6035.
+* Adding production test support Explorer Kit BGM220.
+
+
+==============================================================
+1v4p6
+==============================================================
+Support for EFM32PG22 Dev kit
+
+
+==============================================================
+1v4p5
+==============================================================
+Support for Explorer Kit BGM220
+
+
+==============================================================
+1v4p4
+==============================================================
+Initial public version
+
+Addressed issues:
+ * The kit firmware could in some circumstances report support for AEM
+ * The kit firmware could crash when configuring PTI
+
+
+==============================================================
+0v8p0
+==============================================================
+Initial version

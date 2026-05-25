@@ -1,0 +1,36 @@
+<DataBase>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="EFR32XG21-secureboot" Core="JLINK_CORE_CORTEX_M33" WorkRAMAddr="0x20000000" WorkRAMSize="0x14000" />
+    <FlashBankInfo Name="M33 Flash" BaseAddr="0x00000000" MaxSize="0x100000" Loader="EFR32XG21/EFR32XG21.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+    <FlashBankInfo Name="Userdata" BaseAddr="0x0fe00000" MaxSize="0x400" Loader="EFR32XG21/EFR32XG21UD.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="EFR32XG29B000F1024" Core="JLINK_CORE_CORTEX_M33" WorkRAMAddr="0x20000000" WorkRAMSize="0x8000" JLinkScriptFile="EFR32Series2/Series2.JLinkScript" Aliases="EFR32MG29BxxxF1024;EFR32BG29BxxxF1024;EFR32XG29BxxxF1024" />
+    <FlashBankInfo Name="M33 Flash" BaseAddr="0x08000000" MaxSize="0x100000" Loader="EFR32XG29/EFR32XG29.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+    <FlashBankInfo Name="Userdata" BaseAddr="0x0fe00000" MaxSize="0x400" Loader="EFR32Series2/Series2UD.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="EFR32XG2DB000F512" Core="JLINK_CORE_CORTEX_M33" WorkRAMAddr="0x20000000" WorkRAMSize="0x8000" JLinkScriptFile="EFR32Series2/Series2.JLinkScript" Aliases="EFR32FG2DBxxxF512;EFR32FG2DAxxxF256;EFR32XG2DBxxxF512" />
+    <FlashBankInfo Name="M33 Flash" BaseAddr="0x08000000" MaxSize="0x100000" Loader="EFR32XG2D/EFR32XG2D.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+    <FlashBankInfo Name="Userdata" BaseAddr="0x0fe00000" MaxSize="0x400" Loader="EFR32Series2/Series2UD.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="EFR32XG2BB000F1016" Core="JLINK_CORE_CORTEX_M33" WorkRAMAddr="0x20000000" WorkRAMSize="0x8000" JLinkScriptFile="EFR32Series2/Series2.JLinkScript" Aliases="EFR32BG2BBxxxF1016;EFR32BG2BAxxxF1016;EFR32FG2BBxxxF1016;EFR32FG2BAxxxF1016;EFR32MG2BBxxxF1016;EFR32MG2BAxxxF1016;EFR32XG2BBxxxF1016" />
+    <FlashBankInfo Name="M33 Flash" BaseAddr="0x08000000" MaxSize="0x100000" Loader="EFR32XG2B/EFR32XG2B.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+    <FlashBankInfo Name="Userdata" BaseAddr="0x0fe00000" MaxSize="0x400" Loader="EFR32Series2/Series2UD.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="SixG301" Core="JLINK_CORE_CORTEX_M33" WorkRAMAddr="0x20000000" WorkRAMSize="0x8000"  JLinkScriptFile="SixG301/SixG301.JLinkScript" Aliases="Sixx301xxxxK;Sixx301xxxxL;Sixx301xxxxW;Sixx301xxxxX" />
+    <FlashBankInfo Name="Flash" BaseAddr="0x01000000" MaxSize="0x8000000" Loader="SixG301/SixG301.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" AlwaysPresent="1" />
+  </Device>
+  <Device>
+    <ChipInfo Vendor="Silicon Labs" Name="SixG353" Core="JLINK_CORE_CORTEX_M55" WorkRAMAddr="0x20020000" WorkRAMSize="0x80000"  JLinkScriptFile="SixG353/SixG353.JLinkScript" Aliases="Sixx353xxxxK;Sixx353xxxxL;Sixx353xxxxM;Sixx353xxxxW;Sixx353xxxxE" />
+    <FlashBankInfo Name="Flash" BaseAddr="0x01000000" MaxSize="0x8000000" Loader="SixG353/SixG353.elf" LoaderType="FLASH_ALGO_TYPE_OPEN" AlwaysPresent="1" />
+  </Device>
+  <Device>
+   <ChipInfo Vendor="Silicon Labs" Name="Si917" Core="JLINK_CORE_CORTEX_M4" WorkRAMAddr="0x00000000" WorkRAMSize="0x00020000" JLinkScriptFile="Si917/Si917.JLinkScript" Aliases="Si917 (Dual Flash);SiWT917M100XNTBA;SiWN917M100XNTBA;SiWN917M100LGTBA;SiWG917M100XNTBA;SiWG917M111XGTBA;SiWG917M110LGTBA;SiWG917M110MGTBA;SiWG917M100MGTBA;SiWG917M111MGTBA;SiWG917M120XGTBA;SiWG917M141XGTBA"/>
+  </Device>
+  <Device>
+   <ChipInfo Vendor="Silicon Labs" Name="Si915" Core="JLINK_CORE_CORTEX_M4" WorkRAMAddr="0x00000000" WorkRAMSize="0x00020000" JLinkScriptFile="Si917/Si917.JLinkScript" Aliases="Si915 (Dual Flash);SiWN915M000XGTBA;SiWG915M000XGTBA;SiWG915M000LGTBA;SiWG915M000MGTBA"/>
+  </Device>
+</DataBase>

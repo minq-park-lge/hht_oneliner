@@ -1,0 +1,237 @@
+
+==============================================================
+2v0p2
+==============================================================
+
+Added Features:
+ * Support DCH message configuration from PC tools
+ * When using "sys restore" drivermode will now default to WinUSB instead of SEGGER
+
+Addressed issues:
+ * Minor bugfixes
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p1
+==============================================================
+
+Added Features:
+ * Added board support: BRD4002B
+ * General improvements for CLI commands.
+
+Addressed issues:
+ * Stored PTI configuration would not be applied on boot.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p0
+==============================================================
+
+Added Features:
+ * Added WinUSB support
+     The driver mode will change to WinUSB automatically after the update.
+     This will cause the USB PID to change, which may cause issues in special setups relying on the PID.
+     For Windows 7 and earlier: Please install the latest SEGGER J-Link software pack
+     with the "Legacy drivers" option enabled before installing this update.
+     If needed, the mode can be changed back to SEGGER using either one of:
+     - Simplicity Commander: "commander adapter drivermode" or GUI
+     - Admin console: The "sys drivermode" command.
+     - SEGGER J-Link Configurator
+ * Enabled PCODE and HSS support
+ * Updated bootloader to 0.13.0
+
+Addressed issues:
+ * Reading CTUNE value could return garbage if no value was set in the radio board
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p1
+==============================================================
+
+Added Features:
+ * None
+
+Addressed issues:
+ * VCOM did not work in debug mode OUT or MINI. Introduced in 1.6.0.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p0
+==============================================================
+
+Added Features:
+ * Disable VCOM buffers when in debug mode "IN" to allow an external adapter to use the VCOM port
+ * Added command to restore default configuration - "sys restore"
+ * Added command to manually disable/enable VCOM - "serial vcom enable/disable"
+ * Support controlling power on/off and voltage from PC tools
+
+Addressed issues:
+ * Fixed potential for corrupting configuration, including IP config
+   * This release will automatically re-enable DHCP if both IP and netmask are configured to 0.0.0.0
+ * Identification of radio boards could fail intermittently
+ * Fix USB configuration during boot which could trigger an error on Windows
+ * Improved PTI baud rate matching at 3.2 MBaud
+ * Improved resistance against "garbage" UART bytes when VCOM is disabled
+ * Concurrent use of RTT and VCOM could cause data loss on the VCOM channel.
+ * Rapid duty cycling around 21 mA could cause NaN samples from AEM.
+ * Connecting to port 4901 would fail in certain scenarios. Introduced in 1.5.1.
+ * Series 1 device recovery was unreliable. Introduced in 1.5.1.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p1
+==============================================================
+
+Added Features:
+ * Support for reading and writing scratchpad from PC tools
+ * Support reading MAC address from PC tools
+ * By default, AEM is recalibrated when changing target voltage by more than 0.1 V
+   * This can be disabled by passing "--nocalibrate" to the "target voltage" command
+ * Support clearing the nickname by using syntax 'sys nickname ""'
+ * Updated the base J-Link debugger application sources
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p0
+==============================================================
+
+Added Features:
+ * Support for "auxillary UART" for SiWx917 devices, re-purposing flow control pins
+ * Support for VCOM config from PC tools
+ * Support starting AEM calibration from PC tools
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v4p12
+==============================================================
+
+Added Features:
+ * Force VCOM enable on for certain Si91x boards lacking HW support
+
+Addressed issues:
+ * VUART didn't work on certain xG24 projects
+ * For a small set of radio boards, the stored CTUNE values were not exposed to external applications (e.g. Commander/Studio)
+
+Known Issues/Limitations:
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+
+
+==============================================================
+1v4p10
+==============================================================
+
+Added Features:
+ * Increased maximum PTI packet length from 1024 B to 1950 B
+ * When the reset button is pressed, the board controller refreshes the display
+ * Added "sys voltage" CLI command to check VMCU, 5V, Vtarget and 3V3
+ * Added "target ledstatus" CLI command to check status of LEDs
+ * VUART over PTI is selected automatically on boot for Si91x boards 
+ * The reported maximum target interface speed is now dependent on the type of interface (SWD, JTAG, C2)
+
+Addressed issues:
+ * Improved PTI capture stability
+
+Known Issues/Limitations:
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+
+
+==============================================================
+0v8p7
+==============================================================
+  * Automatic configuration of VCOM/PTI over SWO (CoS)
+  * Full implementation of Logic analyzer
+  * Preview support for VUART over PTI
+
+  Known issues/Limitations:
+  * Potential performance issues with PTI
+
+
+==============================================================
+0v8p6
+==============================================================
+  * Added support for PTI
+  * Mock implementation of Logic analyzer
+
+  Known issues/Limitations:
+  * Potential performance issues with PTI
+
+
+==============================================================
+0v8p5
+==============================================================
+  * Use DCH message version 3 by default
+
+
+==============================================================
+0v8p4
+==============================================================
+  * Improved VCOM stability
+  * Changed admin console prompt from WSTK to WPK
+  * Added AEM calibration at boot
+  * Fixed issues with timestamps leading to what appeared to be gaps in the AEM data
+  * Fixed crash when running "pti config"
+
+ Known issues/Limitations:
+  * PTI is not supported yet
+  * Logic analyzer is not supported yet
+
+
+==============================================================
+0v8p3
+==============================================================
+ * Improved VCOM stability
+ * Fixed VCOM HW flow control
+ * Fixed debug mode after boot - previously always booted in mode "MCU"
+ * Fixed intermittent EEPROM write issue
+ * Fixed initial IP config - now defaults to DHCP
+
+
+==============================================================
+0v8p2
+==============================================================
+
+ * Fixed SWO
+ * AEM Gain values updated
+ * Updated bootloader to 0.11.1
+
+
+==============================================================
+0v8p1
+==============================================================
+
+ * Support for nickname and IP configuration
+ * AEM Gain values updated
+
+
+==============================================================
+0v8p0
+==============================================================
+
+Initial version

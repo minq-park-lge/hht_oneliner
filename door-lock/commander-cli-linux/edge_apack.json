@@ -1,0 +1,92 @@
+{
+  "id": "edge",
+  "app_version": "1.3.0",
+  "label": "EDGE adapter pack",
+  "description": "EDGE is the capturing entity that connects to the adapters and streams data.",
+  "path": [
+    ".",
+    "../MacOS"
+  ],
+  "requiredFeatureLevel": "",
+  "featureLevel": 1,
+  "executable": {
+    "edge:linux.x86": {
+      "exe": "edge",
+      "optional": true
+    },
+    "edge:linux.x86_64": {
+      "exe": "edge",
+      "optional": true
+    },
+    "edge:linux.aarch64": {
+      "exe": "edge",
+      "optional": true
+    },
+    "edge:win32.x86": {
+      "exe": "edge.exe",
+      "optional": true
+    },
+    "edge:win32.x86_64": {
+      "exe": "edge.exe",
+      "optional": true
+    },
+    "edge:macosx.x86_64": {
+      "exe": "edge",
+      "optional": true
+    },
+    "edge:macosx.aarch64": {
+      "exe": "edge",
+      "optional": true
+    }
+  },
+  "function": {
+    "version": {
+      "cmd": "$(edge) -v"
+    },
+    "quit": {
+      "cmd": "$(edge) quit --json"
+    },
+    "create": {
+      "cmd": "$(edge) create ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) --json"
+    },
+    "end": {
+      "cmd": "$(edge) end ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) --json"
+    },
+    "list": {
+      "cmd": "$(edge) list --json"
+    },
+    "listGroup": {
+      "cmd": "$(edge) list ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) --json"
+    },
+    "connect": {
+      "cmd": "$(edge) connect ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) --ip ${ip} --port ${port} --sourcename ${name} --json"
+    },
+    "disconnect": {
+      "cmd": "$(edge) disconnect ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ] --json"
+    },
+    "start": {
+      "cmd": "$(edge) start ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ] --json"
+    },
+    "stop": {
+      "cmd": "$(edge) stop ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ] --json"
+    },
+    "config": {
+      "cmd": "$(edge) config [ --url ${url} ] [ --storage ${storage} ] [ ${restore?--restore} ] [ ${wipe?--wipe} ] --json"
+    },
+    "ci-start": {
+      "cmd": "$(edge) start ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ]"
+    },
+    "ci-stop": {
+      "cmd": "$(edge) stop ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ]"
+    },
+    "ci-pause": {
+      "cmd": "$(edge) pause ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ] --json"
+    },
+    "ci-unpause": {
+      "cmd": "$(edge) resume ( --groupid ${captureInterfaceId} | --groupname ${captureInterfaceName} ) [ --sourcename ${name} ] --json"
+    },
+    "capture": {
+      "cmd": "$(edge) capture --output ${outputPath} ${...sources}"
+    }
+  }
+}

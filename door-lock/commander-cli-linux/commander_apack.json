@@ -1,0 +1,211 @@
+{
+  "id": "simplicityCommander",
+  "label": "Simplicity Commander",
+  "description": "Simplicity Commander",
+  "app_version": "1.24.1",
+  "path": [
+    ".",
+    "../MacOS",
+    "../Frameworks"
+  ],
+  "featureLevel": 9,
+  "requiredFeatureLevel": "apack.core:4",
+  "hwdb.boardid": "method.getPartNumber + method.getVariant",
+  "hwdb.boardrev": "method.getRevision",
+  "hwdb.partid": "id",
+  "apack.adapterLabel": "adapterLabel + \" (\" + serialNumber + \")\"",
+  "apack.boardid": "\"BRD\" + boardId",
+  "apack.boardrev": "boardRevision",
+  "apack.partid": "mcuName",
+  "inspector.usbVid": "0x1366",
+  "inspector.delay": "3000",
+  "adapter_types": "JLink",
+  "export": {
+    "win32.x86_64": {
+      "lib(libjlinkarm)": "JLink_x64.dll"
+    },
+    "linux.aarch64": {
+      "lib(libjlinkarm)": "libjlinkarm.so"
+    },
+    "linux.x86_64": {
+      "lib(libjlinkarm)": "libjlinkarm.so"
+    },
+    "macosx.aarch64": {
+      "lib(libjlinkarm)": "libjlinkarm.dylib"
+    },
+    "macosx.x86_64": {
+      "lib(libjlinkarm)": "libjlinkarm.dylib"
+    }
+  },
+  "executable": {
+    "commander:linux.x86_64": {
+      "exe": "commander"
+    },
+    "commander:linux.x86": {
+      "exe": "commander"
+    },
+    "commander:linux.aarch64": {
+      "exe": "commander"
+    },
+    "commander:win32.x86": {
+      "exe": "commander.exe"
+    },
+    "commander:win32.x86_64": {
+      "exe": "commander.exe"
+    },
+    "commander:macosx.x86_64": {
+      "exe": "commander"
+    },
+    "commander:macosx.aarch64": {
+      "exe": "commander"
+    }
+  },
+  "ui": {
+    "launchItem:mcu.arm.e.*32.*,mcu.8051.efm8.*,mcu.arm.wfm.si917.*,mcu.arm.si.*": {
+      "id": "simplicity_commander",
+      "category": "tools",
+      "icon": "commander40x40.png",
+      "label": "Commander",
+      "launchUiFunction": "launchCommander",
+      "function": "launchCommander",
+      "toolTip": "Graphical and command-line utility to manage flash and security of Silicon Labs devices in development and production environments"
+    }
+  },
+  "function": {
+    "help": {
+      "cmd": "$(commander) --help"
+    },
+    "upload:mcu.arm.e.*32.*,mcu.arm.wf.wgm16.*,mcu.arm.wfm.*,mcu.arm.si.*": {
+      "cmd": "$(commander) --apack  ${external?extflash:flash} ${external?write:} ( --serialno ${sn} | --ip ${addr} ) [ --tif ${tif} ] [ --address ${starthex} ] [ ${run?:--halt} ] [ ${erasemode==full?--masserase:} ] [ --speed ${jlinkspeedkhz} ] [ -d ${part} ] [ --tokengroup znet [ --tokenfile ${encryptionKey} ] [ --tokenfile ${signingKey} ] ] [  ${file} ]  [  ${files} ] [ ${bootImage} ]"
+    },
+    "setDebugMode": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ]  adapter dbgmode ${mode} ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "getDebugMode": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ]  adapter dbgmode ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "inspect": {
+      "cmd": "$(commander) adapter list [ --serialno ${sn} | --ip ${addr} ] [ ${json?--json:} ] [ ${noconnect?--noconnect:} ] [ ${net?--net:} ]"
+    },
+    "writeFirmware": {
+      "cmd": "$(commander) --apack adapter fwupgrade ( --serialno ${sn} | --ip ${addr} ) ${file}"
+    },
+    "writeFirmwareDefault": {
+      "cmd": "$(commander) ${json?--json:--apack} adapter fwupgrade --nocheck ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "checkFirmware": {
+      "cmd": "$(commander) ${json?--json:--apack} adapter fwupgradecheck ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "listFirmwarePackages": {
+      "cmd": "$(commander) ${json?--json:--apack} adapter fwupgradepackages"
+    },
+    "wstkSimpleApplicationUpload": {
+      "cmd": "$(commander) --apack flash ( --serialno ${sn} | --ip ${addr} ) [ -d ${part} ] ${file}"
+    },
+    "wstkApplicationUpload": {
+      "cmd": "$(commander) --apack ${external?extflash:flash} ${external?write:} ( --serialno ${sn} | --ip ${addr} ) [ --tif ${tif} ] [ --address ${start} ] [ ${run?:--halt} ] [ ${erasemode==full?--masserase:} ] [ --speed ${jlinkspeedkhz} ] [ -d ${part} ] [ --tokengroup znet --tokenfile ${encryptionKey} ] [ --tokenfile ${signingKey} ] ${file} [ ${bootImage} ]"
+    },
+    "launchCommander": {
+      "cmd": "$(commander)"
+    },
+    "detectPart": {
+      "cmd": "$(commander) ${json?--json:--apack} device info [ -d ${device} ] [ -d ${part} ] ( --serialno ${sn} | --ip ${addr} ) [ --tif ${tif} ]"
+    },
+    "readNvm3Firmware": {
+      "cmd": "$(commander) nvm3 dump [ -d ${part} ] ( --serialno ${sn} | --ip ${addr} ) --outfile ${outfile}"
+    },
+    "parseNvm3FileDump": {
+      "cmd": "$(commander) nvm3 parse ${input} --key ${key}"
+    },
+    "pageErase": {
+      "cmd": "$(commander) device pageerase [ -d ${part} ] ( --serialno ${sn} | --ip ${addr} ) ( --region ${region} | --range ${range} )"
+    },
+    "massErase": {
+      "cmd": "$(commander) device masserase [ ${json?--json:--apack} ] ( --serialno ${sn} | --ip ${addr} ) [ -d ${part} ]"
+    },
+    "adapterProbe": {
+      "cmd": "$(commander) adapter probe ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:} ]"
+    },
+    "securityStatus": {
+      "cmd": "$(commander) security status ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:} ] [ -d ${part} ]"
+    },
+    "securityLockConfig": {
+      "cmd": "$(commander) security lockconfig [ ${enable?--secure-debug-unlock enable:--secure-debug-unlock disable} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "securityDebugLock": {
+      "cmd": "$(commander) security lock ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "securityDebugUnlock": {
+      "cmd": "$(commander) security unlock [ --cert ${cert} ] [ --cert-privkey ${certprivkey} ] [ --command-key ${commandkey} ] [ --cert-signature ${certsignature} ] [ --command-signature ${commandsignature} ] [ --authorization ${authorization} ] [ --cert-pubkey ${certpubkey} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "securityDisableDeviceErase": {
+      "cmd": "$(commander) security disabledeviceerase ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "securityReadChallenge" : {
+      "cmd": "$(commander) security readchallenge ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "tokensRead": {
+      "cmd": "$(commander) tokens read [ --tokengroup ${tokengroup} | --tokendefs ${tokendefsfile} ] [ --range ${address1}:${address2} ] [ --securerange ${secureaddress1}:${secureaddress2} ] [ ${includeall?--includeall:} ] [ ${showoverrides?--showoverrides:} ] [ --type ${type} ] [ --outfile ${outfile} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "readFromAddress": {
+      "cmd": "$(commander) readmem [ --range ${address1}:${address2} ] [ --region ${region} ] [ --outfile ${outfile} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "readMcuCertificate": { 
+      "cmd": "$(commander) security readcert mcu [ --outfile ${outfile} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:} ] [ -d ${part} ]" 
+    },
+    "flash-bytes": {
+      "cmd": "$(commander) --apack flash ( --patch ${start}:${bytes}:${length} ) ( --serialno ${sn} | --ip ${addr} ) [ --tif ${tif} ] [ --speed ${jlinkspeedkhz} ] [ -d ${part} ] [ ${run?:--halt} ]"
+    },
+    "readRPSVersion": {
+      "cmd": "$(commander) util rpsinfo ( ${file} ) [ ${json?--json:} ]"
+    },
+    "loadRPSFile": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ] rps load [ -d ${part} ] ( --serialno ${sn} | --ip ${addr} ) ( ${file} ) [ ${eraseapp?--eraseapp:} ]"
+    },
+    "readWiFiFwVersion": {
+      "cmd": "$(commander) mfg917 info [ -d ${part} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:} ]"
+    },
+    "setNickName": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ] adapter nick ${nickname} ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "getNickName": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ] adapter nick ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "resetDevice": {
+      "cmd": "$(commander) [ ${json?--json:--apack} ] device reset ( --serialno ${sn} | --ip ${addr} )"
+    },
+    "ctuneGet": {
+      "cmd": "$(commander) ctune get [ ${json?--json:--apack} ] ( --serialno ${sn} | --ip ${addr} ) [ -d ${part} ]"
+    },
+    "ctuneSet": {
+      "cmd": "$(commander) ctune set --value ${ctune} [ ${json?--json:--apack} ] ( --serialno ${sn} | --ip ${addr} ) [ -d ${part} ]"
+    },
+    "ctuneAutoset": {
+      "cmd": "$(commander) ctune autoset [ ${json?--json:--apack} ] ( --serialno ${sn} | --ip ${addr} ) [ -d ${part} ]"
+    },
+    "setAdapterNetworkSettings": {
+      "cmd": "$(commander) adapter ip [ --addr ${cidraddress} ] [ --dns ${dns} ] [ --gw ${gateway} ] [ ${dhcp?--dhcp:} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "getAdapterNetworkSettings": {
+      "cmd": "$(commander) adapter ip ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "adapterReset": {
+      "cmd": "$(commander) adapter reset ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "zwaveQrRead": {
+      "cmd": "$(commander) device zwave-qrcode [ --timeout ${timeout} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "simpleCombineConvertBinaries": {
+      "cmd": "$(commander) convert ${file1} [ ${file2} ] [ --address ${binfileaddr} ] --outfile ${outfile} [ ${json?--json:--apack} ]"
+    },
+    "deviceRecover": {
+      "cmd": "$(commander) device recover ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ] [ -d ${part} ]"
+    },
+    "adapterDchMessageEnable": {
+      "cmd": "$(commander) adapter dchconfig [ ${aem?--enable aem:} ] [ ${pcs?--enable pcsample:} ] [ ${exc?--enable exception:} ] [ ${pti?--enable pti:} ] [ ${logic?--enable logic:} ] [ --messageversion ${messageversion} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    },
+    "adapterDchMessageDisable": {
+      "cmd": "$(commander) adapter dchconfig [ ${aem?--disable aem:} ] [ ${pcs?--disable pcsample:} ] [ ${exc?--disable exception:} ] [ ${pti?--disable pti:} ] [ ${logic?--disable logic:} ] [ --messageversion ${messageversion} ] ( --serialno ${sn} | --ip ${addr} ) [ ${json?--json:--apack} ]"
+    }
+  }
+}

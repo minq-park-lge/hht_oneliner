@@ -1,0 +1,40 @@
+[
+  {
+    "name": "MYAPP_EXAMPLE_BYTE",
+    "key": "0x600",
+    "sizeB": 1,
+    "description": "A single byte."
+  },
+
+  {
+    "name": "MYAPP_EXAMPLE_UINT16",
+    "key": "0x601",
+    "sizeB": 2,
+    "description": "A 16 bit unsigned integer."
+  },
+  {
+    "name": "MYAPP_EXAMPLE_UINT32",
+    "key": "0x602",
+    "sizeB": 4,
+    "description": "A 32 bit unsigned integer."
+  },
+  {
+    "name": "MYAPP_EXAMPLE_BYTE_ARRAY",
+    "key": "0x603",
+    "sizeB": 6,
+    "description": "A 6-byte array."
+  },
+  {
+    "name": "MYAPP_EXAMPLE_BYTE_ARRAY_2",
+    "key": "0x604",
+    "sizeB": 3,
+    "description": "A 3-byte byte array."
+  },
+  {
+    "name": "MYAPP_EXAMPLE_STRING",
+    "key": "0x605",
+    "sizeB": 32,
+    "description": "A string with length up to 31 characters (plus zero terminator)",
+    "string": true
+  }
+]

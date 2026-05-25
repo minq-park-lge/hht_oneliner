@@ -1,0 +1,6 @@
+{
+    "firmware_dump_end": 8187904,
+    "m4_common_flash_lsb_addr": 31,
+    "m4_common_flash_msb_addr": 94,
+    "fallback_enable": 1
+}

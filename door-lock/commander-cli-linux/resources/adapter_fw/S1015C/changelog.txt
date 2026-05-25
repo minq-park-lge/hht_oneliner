@@ -1,0 +1,170 @@
+
+==============================================================
+1v4p8
+==============================================================
+
+Added Features;
+ * Support for configuring PTI baudrate to 3.2MHz. This requires a RAIL version above 2.8.0.13.
+ * Added "serial vcom stats" for statistics on VCOM data.
+ * Reduced VCOM latency.
+ * Error message on the VUART console if the kit is unable to connect to the target device
+ * Improved kit startup time
+
+Addressed Issues;
+ * Fixed an issue where the first bytes of a PTI frame could be lost if the frame, including preamble, lasted for more than 10 ms.
+ * When using VUART the connection could drop when resetting the target device
+ * Ensure that debugger SWD pins are properly deinitialized when not actively debugging. This could cause the target device to draw extra current.
+ * Ensure that debugger SWD pins are tristated when in debug mode "off".
+ * Support for different number of Up and Down-channels for RTT when using VUART.
+ * Fixed a bug where the first PTI-frame after PTI interface reconfiguration was dropped.
+ * When using VUART the connection could drop in some situations when the target application was updated
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+1v4p2
+==============================================================
+Added Features;
+ * Hardware flow control is now supported.
+
+Addressed Issues;
+ * Removed device reset during debugger boot sequence.
+ * PTI packets longer than 200 bytes were not supported. Increased to 1022 bytes.
+ * Improved VCOM reliability in situations with slow host computers.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p3
+==============================================================
+Added Features;
+ * Added support for BRD2207A
+
+Addressed Issues;
+ * Miscellaneous timestamp fixes for AEM and PTI data
+
+Known Issues/Limitations;
+ * None
+
+
+==============================================================
+1v3p0
+==============================================================
+Added Features;
+ * VUART support using Silink over USB
+ * VCOM support using Silink over USB
+ * Admin Console support using Silink over USB
+ * Data channel support using Silink over USB
+  * Packet trace capture support on BRD4166 (Thunderboard Sense 2)
+  * PC Samples
+  * Exceptions
+ * SWO support was added in version 0.4.0
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * None
+
+
+==============================================================
+0v4p1
+==============================================================
+Added Features;
+ * Added support for BRD5203A
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v4p0
+==============================================================
+Added Features;
+ * Added support for BRD4166A
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v3p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Improved MSD flashing stability
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v3p0
+==============================================================
+Added Features;
+ * Added mbed/MSD flashing support
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v2p3
+==============================================================
+Added Features;
+ * Improved max SWD clock speed to 1.5 mHz
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v2p2
+==============================================================
+Added Features;
+ * Fixed setting production data on external blank boards
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v2p1
+==============================================================
+Added Features;
+ * Added support for auto-generating JLink serial number
+ * Initial support for BRD7500
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * SWO is not supported
+
+
+==============================================================
+0v2p0
+==============================================================
+Initial release

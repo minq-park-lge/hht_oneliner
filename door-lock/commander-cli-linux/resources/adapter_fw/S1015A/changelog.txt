@@ -1,0 +1,567 @@
+
+==============================================================
+0v15p12
+==============================================================
+
+Added Features;
+ * None
+
+Addressed Issues;
+ * Debugging EFM8BB5x devices could fail with low RAM error
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v15p11
+==============================================================
+
+Also released as 0v15p4.
+
+Added Features;
+ * Added MSD flashing support for EFM32TG11 and EFM32GG11.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v15p10
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Fixed USB (secondary) AEM production test.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p9
+==============================================================
+Added Features;
+ * Added prodtest support for BRD2206A (STK3702A).
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p8
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Updated shipping app for BRD2204A (GG11 STK) after bugfix
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p7
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Updated target flashing sequence
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p6
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Production test updated
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p5
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Updated test support
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p4
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Updated test binaries for all EFM8 targets
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v15p3
+==============================================================
+Added Features;
+ * Added support for BRD2102A (TG11 STK)
+ * Added support for BRD2204A Rev. B00 (GG11 STK)
+
+Addressed Issues;
+ * Version 0.15.2 incorrectly reported its version as 0.15.1
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v15p2
+==============================================================
+Added Features;
+ * Added MSD flashing support for EFM32PG12 (STK3402)
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v15p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Fixed memory usage issue
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v15p0
+==============================================================
+Added Features;
+ * Added support for BRD2204A (GG11 STK)
+
+Addressed Issues;
+ * Reduced maximum C2 clock frequency to improve EFM8SB flashing stability
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v14p7
+==============================================================
+Added Features;
+ * Added test support for BRD2204 (STK3701).
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v14p6
+==============================================================
+Added Features;
+ * Added "spaceinvaders" demo shipping app to BRD2501 (STK3402).
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v14p5
+==============================================================
+Added Features;
+ * Added LC sensor test for BRD2501 (STK3402).
+
+Addressed Issues;
+ * Adjusted Capsense test limits for BRD2501 (STK3402).
+
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v14p4
+==============================================================
+Added Features;
+ * Added test support EFM32PG12 (STK3402)
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v14p3
+==============================================================
+Added Features;
+ * Added MSD flashing support for EFM32PG (STK3401)
+ * Improved debugger bus SWD/JTAG performance by up to 50%.
+ * Extended board support.
+
+Addressed Issues;
+ * Debugger VTARGET voltage was incorrect in Debug OUT, fixed.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+
+==============================================================
+0v14p1
+==============================================================
+Added Features;
+ * Added back "serial" command, that was accidentally removed.
+
+Addressed Issues;
+ * Fixed minor bugs in production test.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+
+
+
+==============================================================
+0v14p0
+==============================================================
+Added Features;
+ * Added support for JTAG.
+ * Added filter for host debugger use when kit is in debug mode IN. I.e. when using an external debugger, use of the on-board debugger will be filtered.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v13p2
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v11p2
+==============================================================
+Added Features;
+ * Enabled VCOM on the Simplicity Connector when in debug OUT or IN mode.
+
+Addressed Issues;
+ * Reduced latency in target serial port from ~20 ms to ~2 ms.
+ * Fixed issue with AEM calibration which could cause (negative) offsets in the measured current.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v11p1
+==============================================================
+Added Features;
+ * Added support for EFM32HG STK3800 Rev. B01
+
+Addressed Issues;
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+   This implies that the "energy" example doesn't work with this firmware version.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v11p0
+==============================================================
+Added Features;
+ * Unlock/recovery of all EFM32 devices except Gecko is now supported.
+   EFM32 Gecko parts can be unlocked if locked, but not recovered in case of GPIO misconfiguration or similar. The EFM32-G8xx-STK supports this.
+ * Added support for resetting the target device by sending a break signal over the USB serial port (CDC).
+
+Addressed Issues;
+ * Breakpoints on EFM8UB2 didn't work. Fixed.
+
+Known Issues;
+ * BCC Packet handling is currently disabled.
+   This means that the functions BSP_CurrentGet() and BSP_VoltageGet() will not work.
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler).
+
+
+==============================================================
+0v10p0
+==============================================================
+Added Features;
+ * Added support for flashing via a USB mass storage device
+ * Added virtual COM port over USB at 115200 bps
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Flashing over MSD is not supported while using other functionality such as debugger or AEM (energy profiler)
+ * STK3200 and STK3400 can only unlock EFM32ZG and EFM32HG devices.
+   All other EFM32 STKs can unlock all EFM32 devices except ZG and HG.
+
+
+==============================================================
+0v2p9
+==============================================================
+Added Features;
+ * Preliminary support for BRD5202 and BRD5300 (BB3 and LB1)
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p8
+==============================================================
+Added Features;
+ * Secondary AEM channel for BRD2012 (HG STK)
+
+Addressed Issues;
+ * Improved AEM VMCU sampling
+ * Fixed incorrect reading of RESET pin which caused J-Link warnings
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p7
+==============================================================
+Added Features;
+
+Addressed Issues;
+ * EFM8 debugging fixes
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p6
+==============================================================
+Added Features;
+ * Improved EFM8 debugger support
+ * Improved production test
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p5
+==============================================================
+Added Features;
+ * Improved EFM8 debugger support
+ * Improved production test
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p4
+==============================================================
+Added Features;
+ * Improved production test
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p3
+==============================================================
+Added Features;
+
+Addressed Issues;
+ * Fixed issue with debugging some new EFM8 devices
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v2p2
+==============================================================
+Added Features;
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v1p5
+==============================================================
+Added Features;
+ * SWO is now supported
+ * Added "sys nickname" command
+ * Added "target button" and "target reset" commands
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v1p4
+==============================================================
+Added Features;
+ * BCC now operates in transparent virtual COM port mode by default
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+
+
+==============================================================
+0v1p3
+==============================================================
+Added Features;
+ * Preliminary support debugging EFM8 devices. Requires J-Link DLL v4.94.
+ * Radio Board / Add-on Board Board ID support
+ * Automatically releasing the display to the target device on MCU STKs after boot
+
+Addressed Issues;                                                                 
+ * Fixed issue where AEM would return INF current samples                         
+
+
+==============================================================
+0v1p2
+==============================================================
+Added BRD5000, BRD5001, BRD5100 and BRD5201 support
+
+
+==============================================================
+0v1p1
+==============================================================
+Initial release

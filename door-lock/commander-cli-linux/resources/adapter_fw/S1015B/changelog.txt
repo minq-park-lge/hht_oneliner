@@ -1,0 +1,882 @@
+
+==============================================================
+2v0p2
+==============================================================
+
+Added Features:
+ * Support DCH message configuration from PC tools
+ * When using "sys restore" drivermode will now default to WinUSB instead of SEGGER
+
+Addressed issues:
+ * Minor bugfixes
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p1
+==============================================================
+
+Added Features
+ * General improvements for CLI commands.
+
+Addressed issues:
+ * Stored PTI configuration would not be applied on boot.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p0
+==============================================================
+
+Added Features:
+ * Added WinUSB support
+     The driver mode will change to WinUSB automatically after the update.
+     This will cause the USB PID to change, which may cause issues in special setups relying on the PID.
+     For Windows 7 and earlier: Please install the latest SEGGER J-Link software pack
+     with the "Legacy drivers" option enabled before installing this update.
+     If needed, the mode can be changed back to SEGGER using either one of:
+     - Simplicity Commander: "commander adapter drivermode" or GUI
+     - Admin console: The "sys drivermode" command.
+     - SEGGER J-Link Configurator
+ * Enabled PCODE and HSS support
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p0
+==============================================================
+
+Added Features:
+ * Disable VCOM buffers when in debug mode "IN" to allow an external adapter to use the VCOM port
+ * Added command to restore default configuration - "sys restore"
+ * Added command to manually disable/enable VCOM - "serial vcom enable/disable"
+ * Support controlling power on/off from PC tools
+
+Addressed issues:
+ * Fixed potential for corrupting configuration
+ * Identification of radio boards could fail intermittently
+ * Concurrent use of RTT and VCOM could cause data loss on the VCOM channel.
+ * Connecting to port 4901 would fail in certain scenarios. Introduced in 1.5.1.
+ * Series 1 device recovery was unreliable. Introduced in 1.5.1.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p1
+==============================================================
+
+Added Features:
+ * Support for VCOM config from PC tools
+ * Support starting AEM calibration from PC tools
+ * Support for reading and writing scratchpad from PC tools
+ * Support reading MAC address from PC tools
+ * Support clearing the nickname by using syntax 'sys nickname ""'
+ * Updated the base J-Link debugger application sources
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v4p13
+==============================================================
+
+Addressed issues:
+ * Configuration over SWO could cause VCOM CTS to get stuck high, preventing the target from transmitting any data on VCOM until next reset
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p12
+==============================================================
+
+Addressed issues:
+ * Debug mode was not restored after boot since 1v4p10. The board would always boot in debug mode MCU, but still appear to be in the stored mode.
+ * Fixed VUART on devices with flash base address 0x08000000 (xG24 and newer)
+ * For a small set of radio boards, the stored CTUNE values were not exposed to external applications (e.g. Commander/Studio)
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p11
+==============================================================
+
+Addressed issues:
+ * SWO failed if it was read more than once in a session
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p10
+==============================================================
+
+Added Features:
+ * Added support for Configuration over SWO for VCOM and PTI settings
+ * Increased max VCOM baud rate from 921600 to 3686400
+ * Increased maximum PTI packet length from 1024 B to 1950 B
+ * When the reset button is pressed, the board controller refreshes the display
+ * Added “net mac” CLI command to show the MAC address
+ * Added “sys voltage” CLI command to check VMCU, 5V, Vtarget and 3V3
+ * New PTI mode: VUART over PTI, only applies to Si917
+ * The reported maximum target interface speed is now dependent on the type of interface (SWD, JTAG, C2)
+
+Addressed issues:
+ * Improved PTI capture stability
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p6
+==============================================================
+
+Added Features:
+ * Support for configuring PTI baudrate to 3.2MHz. This requires a RAIL version above 2.8.0.13.
+ * Added "serial vcom stats" for statistics on VCOM data.
+
+Addressed issues:
+ * Ensure that debug interface is properly deinitialized when reading AEM data over USB. This could cause the target device to draw extra current.
+ * Reduced current consumption of the kit in some situations.
+ * Support for different number of Up and Down-channels for RTT when using VUART.
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p4
+==============================================================
+
+Added Features:
+ * If the kit firmware crashes, the kit will now automatically reboot.
+ * Added "time info" CLI command that will print more info about the time synchronization service.
+
+Addressed issues:
+ * VUART does not work over USB. This is now supported when using silink > 0.5.0
+ * Fixed an issue where the first bytes of a PTI frame could be lost if the frame, including preamble, lasted for more than 10 ms.
+ * Fixed an issue where the WSTK would not always respond to a UDP Discovery packet.
+ * Fixed an issue where the kit would sometimes erroneously report that it was not able to start time synchronization in client mode.
+
+Known Issues/Limitations;
+ * VUART on EFR32xG22/EFR32xG21 may stop working after a reset of the target device.
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p3
+==============================================================
+
+Added Features;
+ * Improved kit startup time
+ * Error message on the VUART console if the kit is unable to connect to the target device
+
+Addressed Issues;
+ * When connecting via IP and using RTT it could happen that the kit crashed if the PC did not exit the controlling process in a clean way
+ * When using VUART the connection could drop when resetting the target device
+ * When using VUART the connection could drop in some situations when the target application was updated
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+ * VUART does not work over USB
+
+
+==============================================================
+1v4p2
+==============================================================
+
+Bootloader upgrade to bootloader S1016B version 0v9p1b153.
+
+Added Features;
+ * None
+
+Addressed Issues;
+ * The kit would halt in the bootloader instead of booting normally if the target application drove both push button GPIOs to GND
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * WSTK IP Stack resource depletion if receiving time synchronization packets after role reconfiguration. This can happen when the kit has been configured as a time server, and then is reconfigured as either client or time synchronization is disabled.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v4p0
+==============================================================
+Added Features;
+ * Added support for VUART with Cortex-M33.
+
+Addressed Issues;
+ * PTI packets longer than 200 bytes were not supported. Increased to 1022 bytes.
+ * VCOM hardware handshake signal CTS is no longer driven when hardware handshake is disabled.
+ * An incorrect AEM gain channel selection boundary caused all measurements between 590 uA and 1250 uA to be reported as 590 uA.
+ * Improved VCOM reliability in situations with slow host computers.
+ * Improved response time for UDP discovery packets
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p4
+==============================================================
+Added Features;
+ * Added support for reading out CTUNE value from radio boards
+
+Addressed Issues;
+ * Fixed issue where data written to USB CDC VCOM port was sometimes lost
+ * Enabling PC samples and/or exceptions in the data channel could cause data corruption and lost data
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p3
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * It could take up to one second from calling "time client" or "time server" before the change took effect
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p2
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Data channel (DCH/IP port 4905) timestamps would occasionally be off by 25.6 seconds
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Data channel (DCH/IP port 4905) PTI timestamps would wrap to negative after one hour
+ * Data channel (DCH/IP port 4905) AEM timestamp would occasionally be off by 25.6 seconds
+ * When connecting to Data channel, all existing PTI data, PC samples and exceptions are now cleared
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v3p0
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Data channel (DCH/IP port 4905) AEM timestamps were sometimes off by +/- 3.2 ms
+ * PC sample packets over DCH could in rare occasions get an invalid length, causing some data to be dropped
+ * PTI timestamps were more accurately calibrated and adjusted by 1 us
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v2p2
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Hardware handshake auto-config worked in the wrong direction
+   * CTS mode was enabled instead of RTS mode
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v2p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Debug mode was always reverted to MCU after restart since version 1.2.0
+   * Tools would display the configured mode (e.g. OUT), not the actual one (MCU)
+ * When using Segger RTT, other functionality would become slow or unavailable
+ * Changed behavior of the VCOM RTS line
+   * No longer blocking target TX when nothing is connected to VCOM
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v2p0
+==============================================================
+Added Features;
+ * Support for energy profiler data over Data Channel (DCH)
+   * New protocol message version 3 to support new data sources and
+     nanosecond timestamps.
+   * Protocol message version 2 supported still supported for packet trace (PTI).
+   * AEM, PC samples, exceptions and Packet Trace supported using
+     protocol message version 3.
+ * "dch message" command set added.
+   * Protocol message version select.
+     * version 2 is default.
+   * Selective control of data sources over DCH.
+   * Packet trace (PTI) messages enabled by default.
+
+Addressed Issues;
+ * VCOM over EMUCOM didn't work in version 1.1.x and newer.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v1p1
+==============================================================
+Added Features;
+ * Cortex-M33 support
+ * Display/UI improvements for readibility
+
+Addressed Issues;
+ * Board ID detection could stop working due to a concurrency issue
+
+Known Issues/Limitations;
+ * USB connections must be explicitly closed, there is no timeout
+   * If Silink crashes or is killed, a kit restart may be required to restore connectivity
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v1p0
+==============================================================
+Added Features;
+ * Added support for Admin Console over USB
+ * Added support for Virtual UART over USB
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * USB connections must be explicitly closed, there is no timeout
+   * If Silink crashes or is killed, a kit restart may be required to restore connectivity
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v0p3
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * PTI would drop packets if the packet rate increased above about 300 packets per second
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v0p2
+==============================================================
+Added Features;
+ * Improved vcom port command for configuring hardware handshake
+   * "auto" mode uses radio board information to configure for the most common use case. Only EFR32 radio boards are considered.
+   * Command syntax: "serial vcom config handshake <disabled/rtscts/rts/cts/auto>"
+ * Added VUART support for devices with more than 32 kB RAM
+
+Addressed Issues;
+ * It is now possible to revert to handshake autoconfig after modifying the configuration
+ * Fixed "debug mode" value in discovery data
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v0p1
+==============================================================
+Added Features;
+ * PTI support for second channel. Only one capture channel at a time is currently supported.
+
+Addressed Issues;
+ * Fixed various issues related to stability
+ * Fixed boot problem some kits
+ * Fixed PTI issue. Very high packet rates could lock up the firmware.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+1v0p0
+==============================================================
+Added Features;
+ * Updated handshake command set
+   * Use command "serial vcom config handshake <disabled/rtscts/rts/cts>" to configure
+   * Use command "serial vcom config speed <9600...921600>" to configure
+
+Addressed Issues;
+ * VirtualCOM port over sockets and EMUCOM had incorrect RTS default state, which affected HW handshake applications.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v15p4
+==============================================================
+Added Features;
+ * Added support for hardware flow control on VCOM port
+ * Added support for configurable VCOM baud rate up to 921 600 bps
+   * Use command "serial config vcom speed <baud rate> handshake <enable/disable>" to configure
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v15p3
+==============================================================
+Added Features;
+ * Improved maximum SWD clock speed from 4 MHz to 8 MHz.
+ * Improved SWD stability when debugging external targets.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v15p2
+==============================================================
+Added Features;
+ * Added support for ARTIK Wireless STK.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v15p1
+==============================================================
+Added Features;
+ * Added a feature that will cause a rescan/init of the RAM control block ( RTT ) whenever you connect to the
+   IP port 4900 and when a debugger pin reset is issued. This is useful when an application using VirtualUART is
+   rebuilt, causing the location of the RAM control block to move.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v15p0
+==============================================================
+Added Features;
+ * Added support for downstream EmberDebug. ( Host -> Target direction ). IP port 4900 will now forward data to the target over
+   RTT channel with name "silabsvuartdown".
+
+Addressed Issues;
+ * Fixed an isse where occasional data on the upstream VirtualUART channel would get lost if a socket connection to port 4905 was not opened.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v14p3
+==============================================================
+Added Features;
+ * Extended board support.
+ * Support for persistent discovery key.
+ * Improved output from "pti config" command.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v14p2
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Fixed kit reset which could occur when using VCOM/Debugger/AEM simultaneously over USB.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v14p1
+==============================================================
+Added Features;
+ * Fixed target->WSTK protocol parsing for emberDebug.
+ * Added back "serial" command, that was accidentally removed.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v14p0
+==============================================================
+Added Features;
+ * Added support for JTAG.
+ * Improved debugger bus SWD/JTAG bus performance by up to 50%.
+ * Improved reliability of IP socket connections.
+ * Added support for reconnecting to sockets.
+ * Packet trace interface (PTI) configuration is now persistent when set using the admin console. This configuration is used when auto-config fails.
+ * Default PTI configuration is now EFR32.
+ * Support for SWO / Virtual UART in standard CMSIS mode.
+ * Support for EmberDebug using SWO
+ * Added filter for host debugger use when kit is in debug mode IN. I.e. when using an external debugger, use of the on-board debugger will be filtered.
+
+Addressed Issues;
+ * Override serial port configuration to always enable hardware flow control if BRD4301 is detected.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v13p2
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Override serial port configuration to always enable hardware flow control if any EFR32MG radio board is connected
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v13p1
+==============================================================
+Added Features;
+ * None
+
+Addressed Issues;
+ * Override serial port configuration to always enable hardware flow control if BRD4100 or BRD4300 is connected.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v13p0
+==============================================================
+Added Features;
+ * Added serial port configuration command to enable/disable hardware flow control on VCOM port.
+
+Addressed Issues;
+ * None
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v12p1
+==============================================================
+Added Features;
+ * Added visual indication ("sys visual" command)
+
+Addressed Issues;
+ * Fixed issue where the measured voltage in AEM and the debugger could be wrong
+ * Fixed PTI auto config for EFR32 radio boards
+ * Improved handling of socket connections
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v12p0
+==============================================================
+Added Features;
+ * Enabled SWO printf output on port 4900
+
+Addressed Issues;
+ * Fixed issue with AEM calibration which could cause offsets in the measured current.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v11p2
+==============================================================
+Added Features;
+ * Enabled PTI0 and VCOM on the Simplicity Connector when in debug OUT or IN mode.
+
+Addressed Issues;
+ * Reduced latency in target serial port from ~20 ms to ~2 ms.
+ * Fixed issue with AEM calibration which could cause (negative) offsets in the measured current.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v11p1
+==============================================================
+Added Features;
+ * Flash page protect and unprotect is supported on EFM32, EZR32 and EFR32.
+ * Debug lock / unlock is supported on EFM32 and EZR32.
+ * Device recovery of all EFM32, EZR32 devices except EFM32G Gecko is now supported.
+   EFM32 Gecko parts can be unlocked if locked, but not recovered in case of GPIO misconfiguration or similar.
+   The EFM32-G8xx-STK supports this.
+ * Added USB support for PTI data channel packets
+ * Packet trace auto-config based on radio board IDs
+ * Added support for resetting the target device by sending a break signal over the USB serial port (CDC).
+ * New bootloader release 0.9.0 build 89 now follows the firmware package. The bootloader will be upgraded when neccessary.
+
+Addressed Issues;
+ * Fixed an issue where data over the USB serial port (CDC) could "get stuck" in firmware buffers
+   and not be forwarded until new data arrived.
+ * Fixed an issue where firmware could crash when changing debug mode.
+ * Fixed an issue when USB host enumeration/connection would fail on some USB hubs and computers.
+ * Fixed an issue where the AEM current sampling frequency was incorrectly reported.
+   AEM sampling frequency is now 10000 Hz and correctly reported.
+ * Fixed incorrect reading of RESET pin which caused J-Link warnings
+ * Fixed an issue where repeated data channel socket disconnect/reconnect over port 4905 would fail
+   until reboot of the kit.
+
+Known Issues/Limitations;
+ * BCC Packet handling is currently disabled
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v2p4
+==============================================================
+Added Features;
+ * Improved production test
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v2p1
+==============================================================
+Added Features;
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v2p0
+==============================================================
+Added Features;
+ * Added packet trace and data channel on port 4905
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v1p7
+==============================================================
+Added Features;
+ * Added "discovery" admin console command that returns the same key-value pairs as the ISD UDP discovery
+   protocol.
+ * Added support for time syncronization between WSTKs and ISA3 adapters.
+ * Added "time" command group to control the TimeSvc task.
+ * Added board list to the UDP discovery protocol
+ * Fixed some of the UDP discovery key=value pairs that was previously not set.
+
+Addressed Issues;
+ * Moved APPDATA EMUCOM channel to (USER + 11).
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+ * UDP discovery protocol key=value pairs for group "node" not implemented yet
+
+
+==============================================================
+0v1p6
+==============================================================
+Added Features;
+
+Addressed Issues;
+ * Fixed broken firmware package
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+
+
+==============================================================
+0v1p5
+==============================================================
+Added Features;
+ * SWO is now supported
+ * Added discovery
+ * Added "sys nickname" command
+ * Added "target button" and "target reset" commands
+ * Added "quit" command
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+
+
+==============================================================
+0v1p4
+==============================================================
+Added Features;
+ * Added admin console on port 4902
+ * Added virtual COM port on port 4901
+ * BCC now operates in transparent virtual COM port mode by default
+
+Addressed Issues;
+
+Known Issues;
+ * BCC Packet handling is currently disabled
+ * Changing IP address may cause the admin console to become unavailable until the kit is rebooted
+
+
+==============================================================
+0v1p3
+==============================================================
+Added Features;
+ * Preliminary support debugging EFM8 devices. Requires J-Link DLL v4.94.
+ * Radio Board / Add-on Board Board ID support
+ * Automatically releasing the display to the target device on MCU STKs after boot
+
+Addressed Issues;
+ * Fixed issue where AEM would return INF current samples
+
+
+==============================================================
+0v1p2
+==============================================================
+Added BRD5000, BRD5001, BRD5100 and BRD5201 support
+
+
+==============================================================
+0v1p1
+==============================================================
+Initial release
