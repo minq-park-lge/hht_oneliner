@@ -38,18 +38,14 @@ echo "Detected CPU Cores: ${CORES} -> Setting Ninja Jobs to: ${TARGET_JOBS}"
 
 
 mkdir -p "$HOME/bin"
-echo -e '#!/bin/sh\nexec '"${MATTER_ROOT}"'/.environment/cipd/packages/pigweed/bin/ninja -j$TARGET_JOBS "$@"' > "$HOME/bin/ninja"
+echo -e '#!/bin/sh\nexec '"${MATTER_ROOT}"'/.environment/cipd/packages/pigweed/bin/ninja -j'"${TARGET_JOBS}"' "$@"' > "$HOME/bin/ninja"
 chmod +x "$HOME/bin/ninja"
 export PATH="$HOME/bin:${MATTER_ROOT}/.environment/cipd/packages/pigweed/bin:$PATH"
 hash -r
 
 # 2. 빌드 타깃별 최적화 스위칭 변수 세팅
 EXTRA_ZEPHYR_ARGS=""
-if [ "${BUILD_MODE}" = "debug" ]; then
-    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=y -DCONFIG_COMPILER_OPT=\"-Og\""
-else
-    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=n -DCONFIG_COMPILER_OPT=\"-Os\""
-fi
+EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=n -DCONFIG_COMPILER_OPT=\"-Os\""
 
 # 3. 메인 어플리케이션 컴파일 공정 (app.elf 생성 단계)
 west build -p always -d "${MATTER_ROOT}/out" -b evkcmimxrt1060 examples/thermostat/nxp \
