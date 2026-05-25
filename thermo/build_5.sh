@@ -26,8 +26,19 @@ source scripts/activate.sh
 source third_party/nxp/nxp_matter_support/github_sdk/sdk_next/repo/mcuxsdk/mcux-env.sh
 export ARMGCC_DIR="${MATTER_ROOT}/.environment/cipd/packages/arm"
 
+
+# 1. 계산식: 코어 수 - 2 (단, 결과가 1 미만이면 1로 세팅)
+CORES=$(nproc)
+TARGET_JOBS=$(( CORES - 2 ))
+if [ ${TARGET_JOBS} -le 0 ]; then
+    TARGET_JOBS=1
+fi
+
+echo "Detected CPU Cores: ${CORES} -> Setting Ninja Jobs to: ${TARGET_JOBS}"
+
+
 mkdir -p "$HOME/bin"
-echo -e '#!/bin/sh\nexec '"${MATTER_ROOT}"'/.environment/cipd/packages/pigweed/bin/ninja -j16 "$@"' > "$HOME/bin/ninja"
+echo -e '#!/bin/sh\nexec '"${MATTER_ROOT}"'/.environment/cipd/packages/pigweed/bin/ninja -j$TARGET_JOBS "$@"' > "$HOME/bin/ninja"
 chmod +x "$HOME/bin/ninja"
 export PATH="$HOME/bin:${MATTER_ROOT}/.environment/cipd/packages/pigweed/bin:$PATH"
 hash -r
@@ -35,7 +46,7 @@ hash -r
 # 2. 빌드 타깃별 최적화 스위칭 변수 세팅
 EXTRA_ZEPHYR_ARGS=""
 if [ "${BUILD_MODE}" = "debug" ]; then
-    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=y -DCONFIG_COMPILER_OPT=\"-Og -g\""
+    EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=y -DCONFIG_COMPILER_OPT=\"-Og\""
 else
     EXTRA_ZEPHYR_ARGS="-DCONFIG_DEBUG=n -DCONFIG_COMPILER_OPT=\"-Os\""
 fi
