@@ -1,0 +1,131 @@
+From e8ef0fdbaa3bfdf502ae2bca6a7bbafdf46a98e1 Mon Sep 17 00:00:00 2001
+From: Minkyu Park <minq.park@lge.com>
+Date: Wed, 27 May 2026 21:34:47 +0900
+Subject: [PATCH] linux-build
+
+---
+ deps/projfiles/zap/thermostat_matter_wifi.zap |  4 +--
+ update.py                                     | 30 +++++++++----------
+ 2 files changed, 17 insertions(+), 17 deletions(-)
+
+diff --git a/deps/projfiles/zap/thermostat_matter_wifi.zap b/deps/projfiles/zap/thermostat_matter_wifi.zap
+index 6e66631..79269a0 100644
+--- a/deps/projfiles/zap/thermostat_matter_wifi.zap
++++ b/deps/projfiles/zap/thermostat_matter_wifi.zap
+@@ -19,7 +19,7 @@
+   "package": [
+     {
+       "pathRelativity": "relativeToZap",
+-      "path": "..\\..\\mcuxsdk\\middleware\\matter\\src\\app\\zap-templates\\zcl\\zcl.json",
++      "path": "../../../../src/app/zap-templates/zcl/zcl.json",
+       "type": "zcl-properties",
+       "category": "matter",
+       "version": 1,
+@@ -27,7 +27,7 @@
+     },
+     {
+       "pathRelativity": "relativeToZap",
+-      "path": "..\\..\\mcuxsdk\\middleware\\matter\\src\\app\\zap-templates\\app-templates.json",
++      "path": "../../../../src/app/zap-templates/app-templates.json",
+       "type": "gen-templates-json",
+       "category": "matter",
+       "version": "chip-v1"
+diff --git a/update.py b/update.py
+index da3a148..988f051 100644
+--- a/update.py
++++ b/update.py
+@@ -5,7 +5,7 @@ import subprocess
+ 
+ gitBranches = {
+     # Branch, RepoPath
+-    "release/25.06.00":"../../mcuxsdk/middleware/wifi_nxp"
++    "release/25.06.00":"../../../../third_party/nxp/nxp_matter_support/github_sdk/sdk_next/repo/mcuxsdk/middleware/wifi_nxp"
+ }
+ 
+ def git_checkout(branch, repo_path="."):
+@@ -22,7 +22,7 @@ def git_checkout(branch, repo_path="."):
+             check=True
+         )
+ 
+-        # git fetch --all 
++        # git fetch --all
+         subprocess.run(
+             ["git", "fetch", "--all"],
+             cwd=abs_path,
+@@ -47,12 +47,12 @@ def git_checkout(branch, repo_path="."):
+         return False
+ 
+ 
+-# Copy the Dependency Files 
++# Copy the Dependency Files
+ depFiles = {
+-    "deps/nxp_matter_support" : "../../mcuxsdk/middleware/matter/third_party/nxp/nxp_matter_support",
++    "deps/nxp_matter_support" : "../../../../third_party/nxp/nxp_matter_support",
+     "deps/projfiles" : "../",
+-    "deps/mcuxsdk": "../../mcuxsdk",
+-    "deps/nxp_matter":"../../mcuxsdk/middleware/matter"
++    "deps/mcuxsdk": "../../../../third_party/nxp/nxp_matter_support/github_sdk/sdk_next/repo/mcuxsdk",
++    "deps/nxp_matter":"../../../.."
+ }
+ 
+ removeFiles ={
+@@ -66,11 +66,11 @@ removeFolders ={
+ }
+ 
+ 
+-# Copy src files in folder to dst files 
++# Copy src files in folder to dst files
+ def copy_with_structure(src_root, dst_root):
+     for root, dirs, files in os.walk(src_root):
+         for file in files:
+-            
++
+             src_path = os.path.join(root, file)
+             rel_path = os.path.relpath(src_path, src_root)
+ 
+@@ -91,30 +91,30 @@ def copy_with_structure(src_root, dst_root):
+ # Main
+ # -----------------------------
+ if __name__ == "__main__":
+-    
++
+     script_dir = os.path.dirname(os.path.abspath(__file__))
+ 
+-#    for git_branch in gitBranches : 
++#    for git_branch in gitBranches :
+ #        git_repoPath = gitBranches[ git_branch ]
+ #        print(f"\n\n\n============ Git Checkout {git_repoPath} with {git_branch} branch  ================\n\n\n")
+ #        result = git_checkout( git_branch, git_repoPath )
+ #        if result is False :
+ #            sys.exit(1);
+-    
+-    
++
++
+     for src_folder in depFiles :
+         dst_folder = depFiles[ src_folder ]
+ 
+         print(f"\n\n\n============ Copy {src_folder} to {dst_folder}  ================\n\n\n")
+ 
+         copy_with_structure(src_folder, dst_folder)
+-    
++
+     for filePath in removeFiles :
+         removeFile = filePath
+         if os.path.exists(removeFile):
+             os.remove(removeFile)
+             print(f"\n============ Remove File {removeFile} ================\n")
+-    
++
+     for folderPath in removeFolders :
+         removeFolder = folderPath
+         if os.path.exists(removeFolder):
+@@ -122,4 +122,4 @@ if __name__ == "__main__":
+             print(f"\n============ Remove Folder {removeFolder} ================\n")
+ 
+     print("\n\n========= finished =========\n\n")
+-    
++
+-- 
+2.54.0
+
