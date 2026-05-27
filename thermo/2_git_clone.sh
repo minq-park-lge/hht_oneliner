@@ -5,6 +5,7 @@ git clone https://github.com/NXP/matter.git -b release/v1.6.0-TE2 nxp_matter
 cd nxp_matter
 ./scripts/checkout_submodules.py --shallow --platform nxp --recursive
 source scripts/bootstrap.sh -p nxp
+pip install pyyaml
 third_party/nxp/nxp_matter_support/scripts/update_nxp_sdk.py --platform common
 source third_party/nxp/nxp_matter_support/github_sdk/sdk_next/repo/mcuxsdk/mcux-env.sh
 export ARMGCC_DIR=$(pwd)/.environment/cipd/packages/arm
