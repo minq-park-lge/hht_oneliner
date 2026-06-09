@@ -1,6 +1,8 @@
 #!/bin/bash
-sudo apt install python3-pip
-sudo pip install pw
+sudo apt update
+sudo apt install -y python3 python3-pip python3-venv
+sudo pip3 install west --break-system-packages
+sudo pip3 install pyyaml --break-system-packages
 brew install python@3.14
 mkdir -p ~/.local/bin && cd ~/.local/bin
 unlink pip

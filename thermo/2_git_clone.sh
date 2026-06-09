@@ -15,4 +15,4 @@ export ARMGCC_DIR=$(pwd)/.environment/cipd/packages/arm
 cd examples/thermostat/nxp
 git clone git@github.com:HT-IoT-Partner/thermostat_nxp_rt1060_v1_6_TE2.git src
 cd src
-git am 0001-linux-build.patch
+#git am 0001-linux-build.patch
