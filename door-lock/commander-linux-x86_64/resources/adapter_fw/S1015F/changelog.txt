@@ -1,0 +1,171 @@
+
+==============================================================
+2v0p2
+==============================================================
+
+Added Features:
+ * Support DCH message configuration from PC tools
+ * When using "sys restore" drivermode will now default to WinUSB instead of SEGGER
+
+Addressed issues:
+ * Minor bugfixes
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p1
+==============================================================
+
+Added Features:
+ * General improvements for CLI commands.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+2v0p0
+==============================================================
+
+Added Features:
+ * Added WinUSB support
+     The driver mode will change to WinUSB automatically after the update.
+     This will cause the USB PID to change, which may cause issues in special setups relying on the PID.
+     For Windows 7 and earlier: Please install the latest SEGGER J-Link software pack
+     with the "Legacy drivers" option enabled before installing this update.
+     If needed, the mode can be changed back to SEGGER using either one of:
+     - Simplicity Commander: "commander adapter drivermode" or GUI
+     - Admin console: The "sys drivermode" command.
+     - SEGGER J-Link Configurator
+ * Enabled PCODE and HSS support
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p1
+==============================================================
+
+Added Features:
+ * None
+
+Addressed issues:
+ * BRD2204C: VCOM did not work in debug mode OUT. Introduced in 1.6.0.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v6p0
+==============================================================
+
+Added Features:
+ * Disable VCOM buffers when in debug mode "IN" to allow an external adapter to use the VCOM port
+ * Added command to restore default configuration - "sys restore"
+ * Added command to manually disable/enable VCOM - "serial vcom enable/disable"
+ * Support controlling power on/off and voltage from PC tools
+
+Addressed issues:
+ * Fixed potential for corrupting configuration
+ * Improved resistance against "garbage" UART bytes when VCOM is disabled
+ * Concurrent use of RTT and VCOM could cause data loss on the VCOM channel.
+ * Connecting to port 4901 would fail in certain scenarios. Introduced in 1.5.1.
+ * Series 1 device recovery was unreliable. Introduced in 1.5.1.
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+1v5p1
+==============================================================
+
+Added Features:
+ * Automatic configuration of VCOM/PTI over SWO (CoS)
+ * Support for displaying logo and configuration on the memory LCD
+   * When the reset button is pressed, the board controller refreshes the display
+ * The reported maximum target interface speed is now dependent on the type of interface (SWD, JTAG, C2)
+ * Support for VCOM config from PC tools
+ * Support for reading and writing scratchpad from PC tools
+ * Support starting AEM calibration from PC tools
+ * Support clearing the nickname by using syntax 'sys nickname ""'
+ * Added "sys voltage" CLI command to check VMCU, 5V, Vtarget and 3V3
+ * Updated the base J-Link debugger application sources
+
+Addressed issues:
+ * None
+
+Known Issues/Limitations:
+ * VUART on series 2 devices may stop working after a reset of the the target device.
+
+
+==============================================================
+0v8p8
+==============================================================
+
+ * Fixed AEM on BRD2012B
+
+
+==============================================================
+0v8p7
+==============================================================
+
+ * Fixed secondary AEM calibration on BRD2204C, BRD2012B
+
+
+==============================================================
+0v8p6
+==============================================================
+ 
+ * AEM did not work on most boards
+
+
+==============================================================
+0v8p5
+==============================================================
+ 
+ * Enabled Admin Console and DCH (AEM, VUART) support
+ * Support secondary AEM on BRD2204C, BRD2012B
+
+
+==============================================================
+0v8p4
+==============================================================
+ 
+ * Support new AEM calibration resistors
+
+
+==============================================================
+0v8p3
+==============================================================
+
+ * Fixed debug mode after boot - previously always booted in mode "MCU"
+
+
+==============================================================
+0v8p2
+==============================================================
+
+ * Change to internal ADC reference for AEM
+ * Partial support for BRD2204C
+
+
+==============================================================
+0v8p1
+==============================================================
+
+ * Support for BRD2504A, BRD5206B, BRD5207B
+
+
+==============================================================
+0v8p0
+==============================================================
+
+ * Initial version

@@ -1,0 +1,91 @@
+==============================================================
+Version 0.1.4
+==============================================================
+
+Added Features;
+ * Add "Set CTUNE" action
+
+Resolved Issues;
+ * None
+
+Known Issues;
+ * None
+
+
+==============================================================
+Version 0.1.3
+==============================================================
+
+Added Features;
+ * Add right-click context menu item to move devices up/down
+   in the list
+ * Add drag-and-drop reordering of devices and actions
+ * Double-clicking on an empty row in the list of devices or 
+   actions will add a new device or action respectively
+ * Cmd+Backspace (macOS) or Ctrl+Backspace (Windows/Linux) will
+   delete the currently highlighted devices or actions
+
+Resolved Issues;
+ * Fixed an issue with manually added devices where the connection
+   type was not automatically inferred when there was only one 
+   connection type provided
+ * Fixed an issue where sorting by selection state did not work
+ * Fixed an issue where sorting by connection type did not work
+
+Known Issues;
+ * None
+
+
+==============================================================
+Version 0.1.2
+==============================================================
+
+Added Features;
+ * On Linux, the MultiCommander application icon is now 
+   included in the app bundle
+
+Resolved Issues;
+ * Fixed an issue on Linux where the application icon was not 
+   being set correctly when MultiCommander was running
+
+Known Issues;
+ * None
+
+
+==============================================================
+Version 0.1.1
+==============================================================
+
+Added Features;
+ * Add right-click context menu item to open highlighted devices
+   in Commander GUI
+
+Resolved Issues;
+ * Fixed an issue where the placeholder image for the actions editor
+   was not displaying correctly when there were no actions configured.
+
+Known Issues;
+ * None
+
+
+==============================================================
+Version 0.1.0
+==============================================================
+
+Initial release
+
+Added Features;
+ * Discover USB and IP connected devices, or add devices manually
+ * Set up batch jobs to perform multiple tasks sequentially on multiple devices
+ * Configure the execution of parallel jobs, including number of concurrent jobs and timeouts
+ * Instant feedback of job progress in the GUI
+ * Variable explorer to preview per-device variables used in batch jobs
+ * Log job output to configurable log files
+ * Save and load batch job configuration files for portability and sharing
+ * Keep current batch job configuration between sessions
+
+Resolved Issues;
+ * None
+
+Known Issues;
+ * None

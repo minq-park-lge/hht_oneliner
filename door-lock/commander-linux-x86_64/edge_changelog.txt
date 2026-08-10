@@ -1,0 +1,144 @@
+==============================================================
+Version 1.3.0
+==============================================================
+
+Added Features;
+ * Edge now sends capture group info/warning/error messages 
+   also via control socket
+ * Allow adding/removing devices from an ongoing capture group
+   (non-PCAPNG captures only). The capture status of the new
+   device will be set to match that of the capture group
+ * Added control socket command for reloading JSON state file
+
+Resolved Issues;
+ * Changes to the 'serialPort' field of a source in the JSON 
+   state file would be overwritten when starting/stopping a 
+   capture group
+ * Starting a PCAPNG capture to a named pipe/FIFO would fail
+   if the named pipe/FIFO already existed
+
+Known Issues;
+ * Windows: CTRL-C on "edge capture" stops the capture, but
+   does not exit the Edge client. Send CTRL-C again to
+   terminate the client.
+
+
+==============================================================
+Version 1.2.1
+==============================================================
+
+Added Features;
+ * None
+
+Resolved Issues;
+ * Fixed control socket handling on Windows.
+
+Known Issues;
+ * Windows: CTRL-C on "edge capture" stops the capture, but
+   does not exit the Edge client. Send CTRL-C again to
+   terminate the client.
+
+
+==============================================================
+Version 1.2.0
+==============================================================
+
+Added Features;
+ * Added support for 'socket' output mode
+ * Added support for switching output modes via control socket
+
+Resolved Issues;
+ * None
+
+
+==============================================================
+Version 1.1.0
+==============================================================
+
+Added Features;
+ * Added 'edge pause' for pausing ongoing captures
+ * Added 'edge resume' for resuming paused captures
+
+Resolved Issues;
+ * When starting a capture ('edge start'), Edge will no longer
+   append data to existing output files; the original file 
+   will be moved to a backup location and a new file will be
+   created instead
+ * Misc stability improvements and bug fixes
+
+
+==============================================================
+Version 1.0.1
+==============================================================
+
+Added Features;
+ * None
+
+Resolved Issues;
+ * Unknown fields in capture group JSON files are no longer 
+   overwritten
+
+
+==============================================================
+Version 1.0.0
+==============================================================
+
+Added Features;
+ * Edge no longer runs as a daemon; the state is kept
+   persistantly in a configurable location
+ * Added 'edge capture', a one-liner command for starting a 
+   capture from one or more sources, which can be stopped by
+   sending CTRL+C
+ * Aligned Edge with SDM specs for capture interface behavior.
+   This includes support for controlling/monitoring capture 
+   groups via Unix domain sockets served by Edge
+
+Resolved Issues;
+ * None
+
+
+==============================================================
+Version 0.0.5
+==============================================================
+
+Added Features;
+ * Updated apack.json
+
+Resolved Issues;
+ * Index option would fail with start command on Windows
+
+
+==============================================================
+Version 0.0.4
+==============================================================
+
+Added Features;
+ * Updated start/stop command in apack.json
+ * Edge list also prints URL configuration
+
+Resolved Issues;
+ * Misc bug fixes
+
+
+==============================================================
+Version 0.0.3
+==============================================================
+
+Added Features;
+ * Added support to start/stop capture on single devices
+
+Resolved Issues;
+ * None
+
+
+==============================================================
+Version 0.0.2
+==============================================================
+
+Added Features;
+ * Allow groups to be created with given group ID
+ * Added "config" command to set a server URL to notify server about status updates
+
+Resolved Issues;
+ * Moved --output option to "start" command
+ * Improved JSON output
